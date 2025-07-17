@@ -17,5 +17,5 @@ window.TrelloPowerUp.initialize({
         },
       ];
     },
-  });
+  }); 
   
