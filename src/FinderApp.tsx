@@ -37,5 +37,5 @@ export const FinderApp = () => {
         run();
     }, []);
 
-    return <div id="finderContainer" style={{ height: '100vh', width: '100vw' }} />;
+    return <div id="finderContainer" style={{ height: '800px', width: '1200px' }} />;
 };
