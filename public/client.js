@@ -8,8 +8,7 @@ TrelloPowerUp.initialize({
             return t.modal({
               url: 'finder.html',
               accentColor: '#cbbbfb',
-              title: 'Select an Asset from Frontify',
-              height: '800',
+              title: 'Select an Asset from Frontify test',
               fullscreen: false,
             });
           },
