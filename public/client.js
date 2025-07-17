@@ -12,6 +12,7 @@ TrelloPowerUp.initialize({
               height: 800,
               fullscreen: false,
             });
+        
           },
         },
       ];
