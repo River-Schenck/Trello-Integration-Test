@@ -44,3 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Power-Up pages
+
+This project exposes two static html pages under `public/` that Trello loads directly.
+
+- `client.html` registers the Power-Up and is referenced from your Trello Power-Up manifest. It loads `client.js` which adds the **Attach from Frontify** card button.
+- `finder.html` is opened by the Power-Up as a modal. It loads React from a CDN and mounts the React based finder in `finder.js`.
+
+During development you can serve the contents of `public/` with any static HTTP server.
