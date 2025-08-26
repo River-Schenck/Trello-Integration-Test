@@ -15,22 +15,33 @@ TrelloPowerUp.initialize({
         },
       ];
     },
-    'save-attachment': function (t, options) {
-      return {
-        name: 'Save to Frontify (test)', // shows up in the attachment menu
-        callback: function (t, opts) {
-          // Trello passes the attachment in either opts.attachment or options.attachment
-          const att = (opts && opts.attachment) || (options && options.attachment);
-  
+   'save-attachment': function (t, options) {
+    return {
+      name: 'Save to Frontify (test)',
+      callback: async function (t, opts) {
+        // 1) See exactly what Trello sent
+        console.log('[SaveAttachment] options:', options);
+        console.log('[SaveAttachment] opts:', opts);
+
+        // 2) Preferred: read the attachment off opts or options
+        const att = opts?.attachment || options?.attachment;
+
+        if (att) {
           console.log('[SaveAttachment] attachment object:', att);
-          console.log('[SaveAttachment] URL:', att?.url);
-          console.log('[SaveAttachment] Name:', att?.name);
-          console.log('[SaveAttachment] Bytes:', att?.bytes);
-          console.log('[SaveAttachment] MimeType:', att?.mimeType);
-  
-          t.alert({ message: 'Check the console for attachment info 👀', duration: 4 });
-        },
-      };
-    },
+          console.log('[SaveAttachment] URL:', att.url);
+          console.log('[SaveAttachment] Name:', att.name);
+          console.log('[SaveAttachment] Bytes:', att.bytes);
+          console.log('[SaveAttachment] MimeType:', att.mimeType);
+          t.alert({ message: 'Got attachment ✅ (check console)', duration: 4 });
+          return;
+        }
+
+        // 3) Fallback: log ALL attachments on the card so you can inspect
+        const card = await t.card('id', 'name', 'attachments');
+        console.warn('[SaveAttachment] No attachment provided. Fallback — all card attachments:', card.attachments);
+        t.alert({ message: 'No attachment provided; logged all card attachments', duration: 5 });
+      },
+    };
+  },
   });
   
